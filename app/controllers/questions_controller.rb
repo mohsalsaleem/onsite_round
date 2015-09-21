@@ -82,7 +82,8 @@ class QuestionsController < ApplicationController
 	print "Score is: "+score.to_s
 	user = current_user
 	Leaderboard.create(user_email: user.email, score: score)
-	redirect_to root_path
+	sign_out current_user
+	redirect_to new_user_session_path
   end
 
   private
