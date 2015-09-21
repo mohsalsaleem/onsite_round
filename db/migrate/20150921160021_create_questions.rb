@@ -1,0 +1,13 @@
+class CreateQuestions < ActiveRecord::Migration
+  def change
+    create_table :questions do |t|
+      t.text :question
+      t.string :option_1
+      t.string :option_2
+      t.string :option_3
+      t.string :option_4
+
+      t.timestamps null: false
+    end
+  end
+end
