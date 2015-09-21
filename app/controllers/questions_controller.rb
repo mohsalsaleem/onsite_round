@@ -67,6 +67,11 @@ class QuestionsController < ApplicationController
 		print q.question+"--------"
 	end
   end
+ 
+  def checkAnswers
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question

@@ -1,8 +1,10 @@
+<% form_for(@questions) action: "checkAnswers" do |q|%>
 <% @questions.each do |q| %>
 	<ul><%= q.question %>
-	<li><%= radio_button_tag "option" , q.id, q.option_1 %> <%= q.option_1%> </li>
-	<li><%= radio_button_tag "option" , q.id, q.option_2 %> <%= q.option_2%></li>
-	<li><%= radio_button_tag "option" , q.id, q.option_3 %> <%= q.option_3%></li>
-	<li><%= radio_button_tag "option" , q.id, q.option_4 %> <%= q.option_4%></li>
+	<li><%= radio_button "option" , q.id.to_s, q.option_1 %> <%= q.option_1%> </li>
+	<li><%= radio_button "option" , q.id.to_s, q.option_2 %> <%= q.option_2%></li>
+	<li><%= radio_button "option" , q.id.to_s, q.option_3 %> <%= q.option_3%></li>
+	<li><%= radio_button "option" , q.id.to_s, q.option_4 %> <%= q.option_4%></li>
 	</ul>
 <%end%>
+<% end %>

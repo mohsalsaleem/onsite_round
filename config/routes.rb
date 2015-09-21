@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :questions
   root "questions#view_questions" 
+  get 'questions/checkAnswers' => 'questions#checkAnswers'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
