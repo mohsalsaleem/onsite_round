@@ -69,6 +69,10 @@ class QuestionsController < ApplicationController
  
   def checkAnswers
 	userAnswers = params[:option]
+	if userAnswers.nil?
+		print "yes"+"-------------"
+		redirect_to root_path
+	else
 	print userAnswers
 	answers = Answer.all
 	print answers.find(1).answer
@@ -84,6 +88,7 @@ class QuestionsController < ApplicationController
 	Leaderboard.create(user_email: user.email, score: score)
 	sign_out current_user
 	redirect_to new_user_session_path
+	end
   end
 
   private
