@@ -1,0 +1,18 @@
+<center>
+<h1>Leaderboard</h1>
+<table border = 1>
+	<thead>	
+	<tr>
+		<th>Email</th>
+		<th>Score</th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @leaderboard.each do |l| %>
+	<tr>
+		<td><%= l.user_email %></td>
+		<td><%= l.score %></td>
+	</tr>
+	<%end%>
+	</tbody>
+</table>

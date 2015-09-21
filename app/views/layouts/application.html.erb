@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if admin_signed_in?%>
+	<%= link_to "Questions", questions_path %>
+	<%= link_to "Answers", answers_path%>
+	<%= link_to "Leaderboard", leaderboard_index_path %>
+	<%= link_to 'Logout', destroy_admin_session_path, method: :delete %>
 
+<%end%>
 <%= yield %>
 
 </body>

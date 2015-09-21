@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:view_questions, :checkAnswers]
+  before_action :authenticate_admin!, only: [:index, :show, :edit, :destroy]
   # GET /questions
   # GET /questions.json
   def index
@@ -63,13 +64,24 @@ class QuestionsController < ApplicationController
   
   def view_questions
 	@questions = Question.order("RANDOM()")
-	@questions.each do |q|
-		print q.question+"--------"
-	end
   end
  
   def checkAnswers
-
+	userAnswers = params[:option]
+	print userAnswers
+	answers = Answer.all
+	print answers.find(1).answer
+	score = 0
+	userAnswers.symbolize_keys()
+	userAnswers.each do |uA|
+		if uA[1] == answers.find(uA[0].to_i).answer
+			score+=1
+		end		
+	end	
+	print "Score is: "+score.to_s
+	user = current_user
+	Leaderboard.create(user_email: user.email, score: score)
+	redirect_to root_path
   end
 
   private

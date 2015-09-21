@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'leaderboard/index'
+
+  devise_for :admins
+  devise_for :users
   resources :answers
   resources :questions
   root "questions#view_questions" 
-  get 'questions/checkAnswers' => 'questions#checkAnswers'
+  post 'questions/checkAnswers' => 'questions#checkAnswers'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
